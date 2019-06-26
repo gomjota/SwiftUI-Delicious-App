@@ -1,13 +1,13 @@
 import SwiftUI
 
-struct CardItem : View {
-    
-    var item: Item
+struct ItemCell : View {
+    let item: Item
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            CardItemImage(imageData: item.image)
-            VStack(alignment: .leading, spacing: 4) {
+        NavigationButton(destination: ItemDetail()) {
+            ItemCellImage(imageData: item.image)
+            
+            VStack(alignment: .leading) {
                 Text(item.title)
                     .color(.primary)
                     .font(.headline)
@@ -16,13 +16,23 @@ struct CardItem : View {
                     .color(.secondary)
                     .multilineTextAlignment(.leading)
                     .lineLimit(2)
-                    .frame(height: 30)
+                    .frame(height: 20)
+                
+                HStack {
+                    Image(systemName: "heart")
+                        .foregroundColor(.red)
+                    Text(String(item.likes))
+                        .font(.subheadline)
+                        .fontWeight(.light)
+                        .foregroundColor(.secondary)
+                }
+                
             }
         }
     }
 }
 
-struct CardItemImage: View {
+struct ItemCellImage: View {
     
     @State var imageData: String
     
@@ -32,13 +42,13 @@ struct CardItemImage: View {
                 Image(self.imageData)
                     .resizable()
                     .renderingMode(.original)
-                    .frame(width: 300, height: 169)
+                    .frame(width: 110, height: 90)
                     .cornerRadius(5)
                     .shadow(color: .gray, radius: 3, x: 0, y: 6)
             } else {
                 Rectangle()
                     .foregroundColor(.gray)
-                    .frame(width: 300, height: 169)
+                    .frame(width: 120, height: 100)
                     .cornerRadius(5)
                     .shadow(radius: 4)
             }
