@@ -7,10 +7,10 @@ struct ContentView : View {
     var body: some View {
         NavigationView {
             List {
+                Text("Trending")
+                    .font(.system(size: 22))
                 ScrollView(showsHorizontalIndicator: false) {
                     VStack(alignment: .leading) {
-                        Text("Trending")
-                            .font(.system(size: 22))
                         HStack(spacing: 10) {
                             ForEach(self.items) { item in
                                 CardItem(item: item)
@@ -20,7 +20,7 @@ struct ContentView : View {
                         }
                     }
                 }
-                .frame(height: 300)
+                .frame(height: 260)
                 
                 Text("Latest")
                     .font(.system(size: 22))

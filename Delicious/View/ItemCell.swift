@@ -26,8 +26,8 @@ struct ItemCell : View {
                         .fontWeight(.light)
                         .foregroundColor(.secondary)
                 }
-                
             }
+            .padding(.leading, 6)
         }
     }
 }
@@ -42,7 +42,7 @@ struct ItemCellImage: View {
                 Image(self.imageData)
                     .resizable()
                     .renderingMode(.original)
-                    .frame(width: 110, height: 90)
+                    .frame(width: 90, height: 70)
                     .cornerRadius(5)
                     .shadow(color: .gray, radius: 3, x: 0, y: 6)
             } else {
